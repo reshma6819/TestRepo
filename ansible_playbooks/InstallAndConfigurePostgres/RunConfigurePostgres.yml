@@ -1,0 +1,4 @@
+- hosts: hadoop-vm2
+  
+  roles:
+          - InstallAndConfigurePostgres

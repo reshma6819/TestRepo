@@ -1,0 +1,6 @@
+  - name: Verifying if the backup is good for restoration
+    shell: |
+            xtrabackup --user='{{ user }}' --password='{{ password }}' --prepare --target-dir='{{ source_dir }}'
+            tar -cvzf '{{ source_dir }}'.tar.gz '{{ source_dir }}'
+            rm -rf '{{ source_dir }}'/*
+            mv '{{ source_dir }}'.tar.gz '{{ source_dir }}'/

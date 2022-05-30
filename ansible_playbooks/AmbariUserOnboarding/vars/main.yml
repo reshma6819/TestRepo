@@ -1,0 +1,13 @@
+---
+# vars file for AmbariUserOnboarding
+#
+ambari_username: admin
+ambari_password: admin
+ambariIP: 35.226.34.24
+user_name: itk_rakesh
+password: Logic@123
+isActive: true
+admin: false
+cluster_name: TestGCP
+group_name: itt
+

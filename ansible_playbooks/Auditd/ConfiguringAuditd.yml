@@ -1,0 +1,22 @@
+- hosts: localhost
+
+  gather_facts: no
+
+  tasks:
+
+     - include_vars: defaultConfigValues.yml
+
+     - name: Changing default values in auditd.conf
+       template:
+                src: lineinfile.j2 
+                dest: /etc/audit/auditd.conf   
+
+     - name: modify permissions for auditd.log
+       file:
+                path: /var/log/audit/audit.log
+                state: file
+                mode: 0604
+
+     - name: add rulei
+       shell: auditctl -w '{{item}}' -p wa
+       with_items: "{{ service_list }}" 

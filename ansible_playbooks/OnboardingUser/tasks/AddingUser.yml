@@ -1,0 +1,9 @@
+  - name: including vars from crypt.yml
+    include_vars: /etc/ansible/roles/OnboardingUser/crypt.yml
+
+  - name: Creating user
+    user:
+            name: "{{ user_name }}"
+            groups: "{{ group_names }}"
+            uid: "{{ uid }}"
+            state: present

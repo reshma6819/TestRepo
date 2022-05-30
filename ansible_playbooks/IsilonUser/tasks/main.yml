@@ -1,0 +1,3 @@
+---
+# tasks file for IsilonUser
+- include_tasks: AddingUserToIsilon.yml

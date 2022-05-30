@@ -1,0 +1,2 @@
+  - name: Starting file trasfer to GCP
+    shell: gsutil rsync -r '{{ source_dir }}' '{{ destination_dir }}'

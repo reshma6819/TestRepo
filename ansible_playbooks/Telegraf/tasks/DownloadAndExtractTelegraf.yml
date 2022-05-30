@@ -1,0 +1,10 @@
+        - name: Downloading telegraph zip file on Windows
+          win_get_url:
+                url: https://dl.influxdata.com/telegraf/releases/telegraf-1.14.5_windows_amd64.zip
+                dest: 'C:\Users\Administrator\Downloads\'
+
+        - name: Extracting Archieve
+          win_unzip:
+                src: 'C:\Users\Administrator\Downloads\telegraf-1.14.5_windows_amd64.zip'
+                dest: 'C:\Program Files\'
+

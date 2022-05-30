@@ -1,0 +1,15 @@
+  - name: Configuring krb5.conf
+    template:
+            src: krb5.conf.j2
+            dest: /etc/krb5.conf
+
+  - name: Configuring kadm5.acl
+    template:
+            src: kadm5.acl.j2
+            dest: /var/kerberos/krb5kdc/kadm5.acl
+
+  - name: Configuring kdc.conf
+    template:
+            src: kdc.conf.j2
+            dest: /var/kerberos/krb5kdc/kdc.conf
+

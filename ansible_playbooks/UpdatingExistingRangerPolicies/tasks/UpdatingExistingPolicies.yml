@@ -1,0 +1,3 @@
+  - name: Adding the users to Generic Policies
+    shell: bash UpdatingExistingRangerPolicies/files/RunAllScripts.sh
+    check_mode: no

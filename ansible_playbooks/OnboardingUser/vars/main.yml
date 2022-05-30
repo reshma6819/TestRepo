@@ -1,0 +1,14 @@
+---
+# vars file for OnboardingUser
+#
+uid: 1039
+group_names:
+        - test
+        - test1
+realm_name: LOCAL.COM
+key_file: srdc-np.pem
+edge_1_hostname: srdc-nonprod-edge-1
+edge_2_hostname: srdc-nonprod-edge-2
+ing_1_hostname: srdc-nonprod-ing-1
+ing_2_hostname: srdc-nonprod-ing-2
+ing_3_hostname: srdc-nonprod-ing-3

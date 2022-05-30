@@ -1,0 +1,6 @@
+---
+# tasks file for InstallAndConfigurePostgres
+#
+- include_tasks: InstallingPostgreSQL.yml
+- include_tasks: CreatingPostgreSQLDatabaseCluster.yml
+- include_tasks: CreatingRole.yml

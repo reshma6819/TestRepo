@@ -1,0 +1,5 @@
+---
+# tasks file for OnboardingUser
+- include_tasks: AddingUser.yml
+- include_tasks: ChangingPassword.yml
+- include_tasks: CreateKerberosPrincipalOnGovNodes.yml

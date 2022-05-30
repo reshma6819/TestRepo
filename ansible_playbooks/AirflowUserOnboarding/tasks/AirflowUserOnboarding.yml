@@ -1,0 +1,2 @@
+  - name: Onboarding user to airflow
+    shell: airflow users create -r "{{ role }}" -u "{{ user_name }}" -p "{{ password }}" -e "{{ email }}" -f "{{ first_name }}" -l "{{ last_name }}"

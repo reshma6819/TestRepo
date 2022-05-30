@@ -1,0 +1,15 @@
+  - name: Create source directory
+    file:
+            path: '{{ source_dir }}'
+            state: directory
+    
+  - name: Starting Kerberos backup
+    shell: |
+            cp -rf /etc/krb5.conf '{{ source_dir }}'
+            cp -rf /etc/security/keytabs '{{ source_dir }}'
+            cp -rf /var/kerberos '{{ source_dir }}'
+            kdb5_util -verbose dump '{{ source_dir }}'/kdb5_dump_'{{ date }}'.txt
+            tar -cvzf '{{ source_dir }}'.tar.gz '{{ source_dir }}'
+            rm -rf '{{ source_dir }}'/*
+            mv '{{ source_dir }}'.tar.gz '{{ source_dir }}'/
+

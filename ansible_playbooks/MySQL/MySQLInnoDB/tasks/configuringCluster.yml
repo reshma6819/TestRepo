@@ -1,0 +1,23 @@
+  - name: Configuring Slaves
+    shell: yes 'y' | mysqlsh -- dba configure-instance { --port=3306 --host=localhost --user=root } --password='{{ mysql_root_password }}' --restart=true --clearReadOnly=true --interactive=true
+    when: inventory_hostname in groups['slaves']
+    notify: 
+    - restart mysqld
+
+  - name: Configuring Master
+    shell: yes 'y' | mysqlsh -- dba configure-instance { --port=3306 --host=localhost --user=root } --password='{{ mysql_root_password }}' --restart=true --clearReadOnly=true --interactive=true 
+    when: inventory_hostname in groups['master']
+    notify:
+    - restart mysqld
+
+  - name: Creating cluster
+    shell: mysqlsh root@'{{ master_hostname }}':3306 --password='{{ mysql_root_password }}' -- dba create-cluster '{{ cluster_name }}' --ipWhitelist='{{ ipWhitelist }}' --force=true
+    when: inventory_hostname in groups['master']
+
+  - name: Adding Slave1 to cluster
+    shell: mysqlsh root@'{{ master_hostname }}':3306 -- cluster add-instance root@hadoop-vm1:3306 --password='{{ mysql_root_password }}' --ipWhitelist='{{ ipWhitelist }}'
+    when: inventory_hostname in groups['master']
+
+  - name: Adding Slave2 to cluster
+    shell: mysqlsh root@'{{ master_hostname }}':3306 -- cluster add-instance root@hadoop-vm2:3306 --password='{{ mysql_root_password }}' --ipWhitelist='{{ ipWhitelist }}'
+    when: inventory_hostname in groups['master']

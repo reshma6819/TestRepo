@@ -1,0 +1,3 @@
+---
+# tasks file for AmbariUserOnboarding
+- include_tasks: AddingUserToAmbari.yml

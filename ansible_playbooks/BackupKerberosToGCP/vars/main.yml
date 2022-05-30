@@ -1,0 +1,8 @@
+---
+# vars file for BackupKerberosToGCP
+#
+date: "{{ lookup('pipe', 'date +%d-%m-%y') }}"
+source_dir: "/kerberos-backup/kerberos-backup-'{{ date }}'"
+destination_dir: "gs://zd_intertek_filespace_backups/ITT_TEST'{{ source_dir }}'"
+user: "root"
+password: "Password@123"

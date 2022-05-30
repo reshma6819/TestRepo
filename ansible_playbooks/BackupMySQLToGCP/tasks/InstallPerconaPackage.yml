@@ -1,0 +1,5 @@
+  - name: Install Percona XtraBackup from Percona yum repository
+    shell: |
+            yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+            percona-release enable-only tools release
+            yum install percona-xtrabackup-80

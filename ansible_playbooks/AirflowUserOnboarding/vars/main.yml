@@ -1,0 +1,8 @@
+---
+# vars file for AirflowUserOnboarding
+user_name: rsaini
+password: Logic@123
+email: rsaini@gmail.com
+first_name: renu
+last_name: saini
+role: User

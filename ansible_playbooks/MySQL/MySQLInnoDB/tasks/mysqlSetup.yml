@@ -1,0 +1,25 @@
+  - name: Storing temporary root password
+    shell: cat /var/log/mysqld.log | grep "temporary password" | rev | cut -d " " -f 1 | rev | tail -1
+    register: temporary_root_password
+
+  - name: Reset the root localhost password
+    shell: "mysql -e \"SET PASSWORD = '{{ mysql_root_password }}';\"
+    --connect-expired-password -uroot -p'{{ temporary_root_password.stdout }}'"
+
+  - name: Allow remote root access
+    mysql_user:
+        login_password: '{{ mysql_root_password }}'
+        name: root
+        password: '{{ mysql_root_password }}'
+        priv: '*.*:ALL,GRANT'
+        host: '{{ remote_root_access }}'
+
+  - name: Dump all databases
+    delegate_to: '{{ master }}'
+    mysql_db:
+        login_user: 'root'
+        login_password: '{{ mysql_root_password }}'
+        state: dump
+        login_unix_socket: /var/lib/mysql/mysql.sock
+        name: all
+        target: /root/masterdbdump.db

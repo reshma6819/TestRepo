@@ -1,0 +1,40 @@
+  - name: Adding Kerberos Principals
+    shell: |
+            echo "{{ kadmin_password }}" | kadmin -p admin/admin -q "addprinc {{ user_name }}@{{ realm_name }}"
+            kadmin.local -q "xst -norandkey -k /etc/security/keytabs/{{ user_name }}.keytab {{ user_name }}@{{ realm_name }}"
+    when: inventory_hostname in groups['Gov-1']
+
+  - name: Trasferring keytab files
+    shell: |
+            scp -i ~/.ssh/{{ key_file }} /etc/security/keytabs/{{ user_name }}.keytab {{ edge_1_hostname }}:/etc/security/keytabs/
+            scp -i ~/.ssh/{{ key_file }} /etc/security/keytabs/{{ user_name }}.keytab {{ edge_2_hostname }}:/etc/security/keytabs/
+            scp -i ~/.ssh/{{ key_file }} /etc/security/keytabs/{{ user_name }}.keytab {{ ing_1_hostname }}:/etc/security/keytabs/
+            scp -i ~/.ssh/{{ key_file }} /etc/security/keytabs/{{ user_name }}.keytab {{ ing_2_hostname }}:/etc/security/keytabs/
+            scp -i ~/.ssh/{{ key_file }} /etc/security/keytabs/{{ user_name }}.keytab {{ ing_3_hostname }}:/etc/security/keytabs/
+    when: inventory_hostname in groups['Gov-1']
+
+  - name: Changing Keytab Ownership on Edge Nodes
+    shell: |
+            chown {{ user_name }}:{{ user_name }} /etc/security/keytabs/{{ user_name }}.keytab
+    when: inventory_hostname in groups['EdgeNodes']
+
+
+  - name: Changing Keytab Ownership on Nifi Nodes
+    shell: |
+            chown nifi:{{ user_name }} /etc/security/keytabs/{{ user_name }}.keytab
+            chmod 644 /etc/security/keytabs/{{ user_name }}.keytab
+    when: inventory_hostname in groups['NifiNodes']
+
+
+  - name: Changing Keytab Ownership on Attunity Node
+    shell: |
+            chown attunity:{{ user_name }} /etc/security/keytabs/{{ user_name }}.keytab
+            chmod 644 /etc/security/keytabs/{{ user_name }}.keytab
+    when: inventory_hostname in groups['AttunityNode']
+
+  - name: Creating user directories
+    become: true
+    become_user: hdfs
+    shell: |
+            hdfs dfs -mkdir -p /user/{{ user_name }}
+            hdfs dfs -chown {{ user_name }}:hdfs /user/{{ user_name }}

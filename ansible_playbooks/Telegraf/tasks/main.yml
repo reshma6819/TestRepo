@@ -1,0 +1,6 @@
+---
+# tasks file for telegraf
+#
+- include_tasks: DownloadAndExtractTelegraf.yml
+- include_tasks: CopyingtelegrafConf.yml
+- include_tasks: InstallTelegraf.yml
