@@ -1,5 +1,0 @@
-  - name: restart postgresql-11
-    service:
-            name: postgresql-11.service
-            state: restarted
-

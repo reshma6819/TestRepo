@@ -1,6 +1,0 @@
-  - name: Creating a New Role and DataBase
-    postgresql_user:
-            name: '{{ username }}'
-            login_password: '{{ psql_password }}'
-            encrypted: yes
-            role_attr_flags: CREATEROLE,CREATEDB,SUPERUSER
