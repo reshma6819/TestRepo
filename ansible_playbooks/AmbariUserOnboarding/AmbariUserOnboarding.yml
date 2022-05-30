@@ -1,4 +1,0 @@
-- hosts: GCP-Master
-
-  roles:
-          - AmbariUserOnboarding
