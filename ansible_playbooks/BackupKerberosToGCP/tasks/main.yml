@@ -1,5 +1,0 @@
----
-# tasks file for BackupKerberosToGCP
-- import_tasks: StartBackup.yml
-- import_tasks: TransferFilesToGCP.yml
-- import_tasks: Cleanup.yml

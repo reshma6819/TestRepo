@@ -1,2 +1,0 @@
-  - name: Cleaning up the Source Directory created by the script
-    shell: rm -rf '{{ source_dir }}'
