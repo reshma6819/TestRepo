@@ -1,7 +1,0 @@
-  - name: Create source directory
-    file:
-            path: '{{ source_dir }}'
-            state: directory
-    
-  - name: Starting percona backup
-    shell: xtrabackup --user='{{ user }}' --password='{{ password }}' --backup --target-dir='{{ source_dir}}'
