@@ -1,5 +1,0 @@
-        - name: Copying telegraf.conf in Edison
-          win_template:
-                src: /opt/ansible/roles/templates/telegrafConf.j2
-                dest: 'C:\Program Files\telegraf\telegraf.conf'
-
