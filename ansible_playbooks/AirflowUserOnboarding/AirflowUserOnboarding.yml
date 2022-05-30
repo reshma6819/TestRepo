@@ -1,4 +1,0 @@
-- hosts: Airflow
-
-  roles:
-          - AirflowUserOnboarding
