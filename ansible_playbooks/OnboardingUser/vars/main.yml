@@ -5,6 +5,8 @@ uid: 1039
 group_names:
         - test
         - test1
+user_name: reshma@repohunter.com
+password: bingtan@8067
 realm_name: LOCAL.COM
 key_file: srdc-np.pem
 edge_1_hostname: srdc-nonprod-edge-1
