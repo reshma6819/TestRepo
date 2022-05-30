@@ -1,7 +1,0 @@
----
-# handlers file for MySQLInnoDB
-
-  - name: restart mysqld
-    service:
-            name: mysqld
-            state: restarted

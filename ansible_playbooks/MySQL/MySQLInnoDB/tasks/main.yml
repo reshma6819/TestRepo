@@ -1,5 +1,0 @@
----
-# tasks file for MySQLInnoDB
-- import_tasks: mysqlInstall.yml
-- import_tasks: mysqlSetup.yml
-- import_tasks: configuringCluster.yml
