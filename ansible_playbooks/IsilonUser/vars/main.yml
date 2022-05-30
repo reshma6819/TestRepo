@@ -1,7 +1,0 @@
----
-# vars file for IsilonUser
-user_name: "ansible_test_user"
-user_password: "Logic@123"
-uid: 1516
-zone: "hdfs-nonprod"
-provider: "LOCAL:hdfs-nonprod"

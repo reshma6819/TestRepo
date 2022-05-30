@@ -1,5 +1,0 @@
-- hosts: Isilon
-  
-  roles:
-   - IsilonUser  
-

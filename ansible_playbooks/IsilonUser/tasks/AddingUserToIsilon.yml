@@ -1,3 +1,0 @@
-  - name: Onboarding user to Isilon
-    shell:
-            isi auth users create "{{ user_name }}" --enabled yes --password "{{ user_password }}" --uid "{{ uid }}" --zone "{{ zone }}" --provider "{{ provider }}"
