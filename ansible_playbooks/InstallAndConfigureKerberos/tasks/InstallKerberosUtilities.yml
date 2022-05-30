@@ -1,8 +1,0 @@
-  - name: including varsfrom crypt.yml
-    include_vars: /etc/ansible/roles/InstallAndConfigureKerberos/crypt.yml
-
-  - name: Installing Kerberos packages
-    yum:
-            name: '{{ kerberos_packages }}'
-            state: present
-

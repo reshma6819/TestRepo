@@ -1,3 +1,0 @@
-  - name: Creating Kerberos Database
-    shell: kdb5_util -P {{ password }} create -s -r {{ realm_name_in_uppercase }}
-

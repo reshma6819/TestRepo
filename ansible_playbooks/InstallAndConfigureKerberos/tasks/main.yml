@@ -1,7 +1,0 @@
----
-# tasks file for InstallAndConfigureKerberos
-- include_tasks: InstallKerberosUtilities.yml
-- include_tasks: CopyingConfigurationFiles.yml
-- include_tasks: CreateKerberosDB.yml
-- include_tasks: AddKerberosPrincipals.yml
-
